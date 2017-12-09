@@ -1,4 +1,4 @@
-package com.example.priya.parallelasynctask;
+AppCompatpackage com.example.priya.parallelasynctask;
 
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,8 +11,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 
-public class MainActivity extends Activity {
-
+public class MainActivity extends AppCompactActivity {
+    
+// AsyncTask
     public class MyAsyncTask extends AsyncTask<Void, Integer, Void> {
 
         ProgressBar myProgressBar;
@@ -22,6 +23,7 @@ public class MainActivity extends Activity {
         }
 
         @Override
+        // Perform an operation on a background thread
         protected Void doInBackground(Void... params) {
             for(int i=0; i<100; i++){
                 publishProgress(i);
@@ -31,6 +33,7 @@ public class MainActivity extends Activity {
         }
 
         @Override
+        // Runs on UI thread after publishProgress(Progress...) is invoked from doInBackground()
         protected void onProgressUpdate(Integer... values) {
             myProgressBar.setProgress(values[0]);
         }
